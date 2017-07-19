@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">SquareCun</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">我的</string>
+    <string name="title_dashboard">方寸</string>
+    <string name="title_notifications">天地</string>
+
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="dummy_button">打开方寸天地</string>
+    <string name="dummy_content">我的\n方寸天地</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
