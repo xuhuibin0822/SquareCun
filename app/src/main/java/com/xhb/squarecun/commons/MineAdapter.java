@@ -11,7 +11,7 @@ import com.xhb.squarecun.base.ViewHolder;
 import java.util.ArrayList;
 
 /**
- * Created by lenovo on 2017/7/20.
+ * Created by XHB on 2017/7/20.
  */
 
 public class MineAdapter extends BaseAdapter<String> {

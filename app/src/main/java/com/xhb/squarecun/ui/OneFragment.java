@@ -3,6 +3,7 @@ package com.xhb.squarecun.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +18,9 @@ import com.xhb.squarecun.commons.MineAdapter;
 
 import java.util.ArrayList;
 
+/**
+ *
+ */
 public class OneFragment extends BaseFragment {
 
     RecyclerView recyclerView;
@@ -56,6 +60,9 @@ public class OneFragment extends BaseFragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         //设置分割线
         //recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
+        //设置项动画
+        //recyclerView.setItemAnimator(new DefaultItemAnimator());
+        //设置项点击事件
         adapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {

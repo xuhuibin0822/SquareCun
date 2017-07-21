@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 
 /**
- * Created by lenovo on 2017/7/19.
+ * Created by XHB on 2017/7/19.
  */
 
 public class BaseActivity extends AppCompatActivity {
