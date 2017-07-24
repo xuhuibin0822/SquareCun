@@ -51,9 +51,9 @@ public class OneFragment extends BaseFragment {
         recyclerView = (RecyclerView) getView().findViewById(R.id.recyclerView);
         //设置适配器
         ArrayList<String> datas = new ArrayList<>();
-        datas.add("1");
-        datas.add("2");
-        datas.add(getString(R.string.large_text));
+        for (int i = 0; i < 100; i++) {
+            datas.add("item = " + i);
+        }
         MineAdapter adapter = new MineAdapter(getActivity(), R.layout.item_mine, datas);
         recyclerView.setAdapter(adapter);
         //设置布局管理器

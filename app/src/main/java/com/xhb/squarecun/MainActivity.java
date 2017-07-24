@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.xhb.squarecun.base.BaseActivity;
 import com.xhb.squarecun.base.BaseFragment;
 import com.xhb.squarecun.ui.OneFragment;
 import com.xhb.squarecun.ui.ThreeFragment;
@@ -21,7 +22,7 @@ import com.xhb.squarecun.ui.TwoFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private ViewPager viewPager;
     BottomNavigationView navigation;

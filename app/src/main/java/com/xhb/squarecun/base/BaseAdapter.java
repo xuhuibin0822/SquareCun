@@ -16,7 +16,6 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
 
     private Context mContext;
     private int mLayoutId;
-    private LayoutInflater mLayoutInflater;
     private ArrayList<T> mDatas;
 
     private OnItemClickListener mOnItemClickListener;
@@ -24,7 +23,6 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
     public BaseAdapter(Context context, int layoutId, ArrayList<T> datas) {
         mContext = context;
         mLayoutId = layoutId;
-        mLayoutInflater = LayoutInflater.from(mContext);
         mDatas = datas;
     }
 

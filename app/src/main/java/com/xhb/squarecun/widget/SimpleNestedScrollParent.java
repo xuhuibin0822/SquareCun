@@ -2,9 +2,11 @@ package com.xhb.squarecun.widget;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
+import android.support.v4.view.NestedScrollingChild;
 import android.support.v4.view.NestedScrollingParent;
 import android.support.v4.view.NestedScrollingParentHelper;
 import android.support.v4.view.ViewCompat;
+import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -18,7 +20,7 @@ import android.widget.LinearLayout;
 public class SimpleNestedScrollParent extends LinearLayout implements NestedScrollingParent {
     private static final String TAG = "SNSP";
     private NestedScrollingParentHelper parentHelper;
-    private boolean addHeight;
+    private boolean addHeight = false;
 
     public SimpleNestedScrollParent(Context context) {
         super(context);
@@ -65,6 +67,7 @@ public class SimpleNestedScrollParent extends LinearLayout implements NestedScro
     @Override
     public void onNestedPreScroll(View target, int dx, int dy, int[] consumed) {
         Log.i(TAG, "onNestedPreScroll Call... dx=" + dx + " dy=" + dy + " top=" + this.getTop() + " target=" + target.getScrollY());
+        Log.i(TAG, "this Height=" + this.getHeight() + " target Height=" + target.getHeight());
         //处理子view传上来的事件
         //头部高度
         int headerHeight = this.getChildAt(0).getHeight();
@@ -93,16 +96,22 @@ public class SimpleNestedScrollParent extends LinearLayout implements NestedScro
         }
         if (dy < 0) {
             //向下滑动
-            if ((this.getTop() + Math.abs(dy)) <= 0) {
-                //header在向下滑动的过程
-                //this.gettop是负数dy也是负数所以需要+dy的绝对值
-                this.layout(this.getLeft(), this.getTop() + Math.abs(dy), this.getRight(), this.getBottom() + Math.abs(dy));
-                consumed[1] += dy;
-            } else {
-                if (this.getTop() < 0) {
-                    int offsetY = Math.abs(this.getTop());
-                    this.layout(this.getLeft(), this.getTop() + offsetY, this.getRight(), this.getBottom() + offsetY);
-                    consumed[1] += offsetY;
+            View firstView = null;
+            if (target instanceof RecyclerView) {
+                firstView = ((RecyclerView)target).getLayoutManager().findViewByPosition(0);
+            }
+            if (firstView != null && firstView.getTop() == 0){
+                if ((this.getTop() + Math.abs(dy)) <= 0) {
+                    //header在向下滑动的过程
+                    //this.gettop是负数dy也是负数所以需要+dy的绝对值
+                    this.layout(this.getLeft(), this.getTop() + Math.abs(dy), this.getRight(), this.getBottom() + Math.abs(dy));
+                    consumed[1] += dy;
+                } else {
+                    if (this.getTop() < 0) {
+                        int offsetY = Math.abs(this.getTop());
+                        this.layout(this.getLeft(), this.getTop() + offsetY, this.getRight(), this.getBottom() + offsetY);
+                        consumed[1] += offsetY;
+                    }
                 }
             }
         }
